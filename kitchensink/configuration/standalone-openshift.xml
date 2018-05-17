@@ -143,7 +143,7 @@
                     </security>
                 </datasource>
                 <datasource jta="true" jndi-name="java:jboss/datasources/OracleDS" pool-name="OracleDS" enabled="true" use-java-context="true">
-                    <connection-url>jdbc:oracle:thin:@192.168.209.157:1521:orcl</connection-url>
+                    <connection-url>jdbc:oracle:thin:@192.168.100.130:1521:orcl</connection-url>
                     <driver>oracle</driver>
                     <pool>
                         <min-pool-size>5</min-pool-size>
