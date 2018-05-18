@@ -71,7 +71,8 @@
             </logger>
         </audit-log>
         <management-interfaces>
-            <http-interface console-enabled="false"><!-- ##MGMT_IFACE_REALM## -->
+            <http-interface console-enabled="false">
+                <!-- ##MGMT_IFACE_REALM## -->
                 <http-upgrade enabled="true"/>
                 <socket-binding http="management-http"/>
             </http-interface>
@@ -134,16 +135,6 @@
         <subsystem xmlns="urn:jboss:domain:bean-validation:1.0"/>
         <subsystem xmlns="urn:jboss:domain:datasources:5.0">
             <datasources>
-<!--
-                <datasource jta="true" jndi-name="java:jboss/datasources/ExampleDS" pool-name="ExampleDS" enabled="true" use-java-context="true">
-                    <connection-url>jdbc:h2:mem:test;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE</connection-url>
-                    <driver>h2</driver>
-                    <security>
-                        <user-name>sa</user-name>
-                        <password>sa</password>
-                    </security>
-                </datasource>
--->
                 <datasource jta="true" jndi-name="java:jboss/datasources/OracleDS" pool-name="OracleDS" enabled="true" use-java-context="true">
                     <connection-url>jdbc:oracle:thin:@192.168.100.130:1521:orcl</connection-url>
                     <driver>oracle</driver>
@@ -239,7 +230,12 @@
                     <option name="MAX_OUTBOUND_MESSAGES" value="1234" type="remoting"/>
                 </channel-creation-options>
             </remote>
-                        <timer-service thread-pool-name="default" default-data-store="default-file-store">                <data-stores>                    <file-data-store name="default-file-store" path="timer-service-data" relative-to="jboss.server.data.dir"/>                    <!-- ##DATASTORES## -->                </data-stores>            </timer-service>
+            <timer-service thread-pool-name="default" default-data-store="default-file-store">
+                <data-stores>
+                    <file-data-store name="default-file-store" path="timer-service-data" relative-to="jboss.server.data.dir"/>
+                    <!-- ##DATASTORES## -->
+                </data-stores>
+            </timer-service>
             <thread-pools>
                 <thread-pool name="default">
                     <max-threads count="10"/>
@@ -249,7 +245,7 @@
             <default-security-domain value="other"/>
             <default-missing-method-permissions-deny-access value="true"/>
             <log-system-exceptions value="true"/>
-            
+           
         </subsystem>
         <subsystem xmlns="urn:jboss:domain:io:2.0">
             <worker name="default"/>
@@ -668,3 +664,4 @@
         </outbound-socket-binding>
     </socket-binding-group>
 </server>
+
