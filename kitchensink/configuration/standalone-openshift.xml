@@ -135,16 +135,17 @@
         <subsystem xmlns="urn:jboss:domain:bean-validation:1.0"/>
         <subsystem xmlns="urn:jboss:domain:datasources:5.0">
             <datasources>
+                <!-- ##DATASOURCES## -->
                 <datasource jta="true" jndi-name="java:jboss/datasources/OracleDS" pool-name="OracleDS" enabled="true" use-java-context="true">
-                    <connection-url>jdbc:oracle:thin:@192.168.100.130:1521:orcl</connection-url>
+                    <connection-url>jdbc:oracle:thin:@${env.DATABASE_SERVICE_HOST:localhost}:${env.DATABASE_SERVICE_PORT:1521}/${env.ORACLE_SID:orcl}</connection-url>
                     <driver>oracle</driver>
                     <pool>
                         <min-pool-size>5</min-pool-size>
                         <max-pool-size>10</max-pool-size>
                     </pool>
                     <security>
-                        <user-name>scott</user-name>
-                        <password>tiger</password>
+                        <user-name>${env.ORACLE_USER:scott}</user-name>
+                        <password>${env.ORACLE_PASSWORD:tiger}</password>
                     </security>
                     <validation>
                         <validate-on-match>true</validate-on-match>
@@ -153,7 +154,6 @@
                         <exception-sorter class-name="org.jboss.jca.adapters.jdbc.extensions.oracle.OracleExceptionSorter"></exception-sorter>
                     </validation>
                 </datasource>
-                <!-- ##DATASOURCES## -->
                 <drivers>
                     <driver name="h2" module="com.h2database.h2">
                         <xa-datasource-class>org.h2.jdbcx.JdbcDataSource</xa-datasource-class>
